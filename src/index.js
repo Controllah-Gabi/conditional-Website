@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ApprovalCard from '../Components/ApprovalCard'
+import ApprovalCard from './ApprovalCard';
 
 class App extends React.Component{
     constructor(props){
@@ -21,7 +21,7 @@ class App extends React.Component{
         if(this.state.lat && !this.state.errorMessage){
             return(
                 <ApprovalCard name="Controllah" location={this.state.lat} >
-                <div>Latitude:{this.state.lat}</div>
+                <p>Latitude:{ this.state.lat}</p>
                 </ApprovalCard>)
         }else if(!this.state.lat && this.state.errorMessage){
             return <div> Error:{this.state.errorMessage} </div>;
@@ -30,7 +30,7 @@ class App extends React.Component{
             return(
                 <ApprovalCard name="Controllah" location={this.state.lat} >
                 <div>Waiting PLease Be Patient</div>
-                </ApprovalCard>)
+                </ApprovalCard>);
         }
     }
 }
