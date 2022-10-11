@@ -1,12 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ApprovalCard from './ApprovalCard';
+import SeasonDisplay from "./seasonDisplay";
+
+
+
+
 
 class App extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = { lat: null, errorMessage: ''};
-
+    
+    state = { lat: null, errorMessage: ''};
+    componentDidMount(){
         window.navigator.geolocation.getCurrentPosition(
             position =>{
                 this.setState({lat: position.coords.latitude});
@@ -20,17 +24,18 @@ class App extends React.Component{
     render(){
         if(this.state.lat && !this.state.errorMessage){
             return(
-                <ApprovalCard name="Controllah" location={this.state.lat} >
-                <p>Latitude:{ this.state.lat}</p>
-                </ApprovalCard>)
+                <div>
+                <ApprovalCard name="Controllah" location={this.state.lat}>
+                <SeasonDisplay lat = {this.state.lat}></SeasonDisplay>
+                </ApprovalCard>
+                </div>);
         }else if(!this.state.lat && this.state.errorMessage){
             return <div> Error:{this.state.errorMessage} </div>;
             
         }else{
             return(
-                <ApprovalCard name="Controllah" location={this.state.lat} >
-                <div>Waiting PLease Be Patient</div>
-                </ApprovalCard>);
+                <ApprovalCard name="Waiting PLease Be Patient" location={this.state.lat} />)
+                
         }
     }
 }

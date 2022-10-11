@@ -5,7 +5,7 @@ const LocationCard = (props) =>{
         <div className="ui card">
             <h1>Hello {props.name}</h1>
             <p className="WelcomeMessage">Welcome to our site, We see that you are located
-            <p></p>{props.location}
+            {props.location}
             </p>
         </div>
     )
