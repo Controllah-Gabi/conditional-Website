@@ -1,18 +1,26 @@
 import React from "react";
-const getSeason = (lat,month) =>{
-    if (month>2 && month <9){
-       return lat>0? 'summer': 'winter';
-    }else{
-        return lat>0 ? "winter" : "summer";
+import video1 from "./pexels-koolshooters-8533112.mp4";
+import video2 from "./pexels-ron-lach-7354255.mp4"
+
+const getSeason = (lat) =>{
+    if (lat === 53.4902162){
+        return "true";
     }
-}
+      else{
+        return "false";
+      }
+    };
+
 
 const SeasonDisplay = (props) => {
-    const season = getSeason(props.lat, new Date().getMonth());
-    const seasonText = season === 'winter' ? 'Chilly':"sunny";
-    return <div>
-        {seasonText}
-        </div>
+    const season = getSeason(props.lat);
+    const seasonText = season === "true" ? video1:video2;
+    return(<div className="row"> 
+        <video autoPlay loop className="background-vid" width="100%" >
+            <source src ={seasonText} type = "video/mp4"/>
+        </video>
+        <h1>{season}</h1>
+    </div>)
 };
 
 export default SeasonDisplay;

@@ -23,11 +23,9 @@ class App extends React.Component{
 
     render(){
         if(this.state.lat && !this.state.errorMessage){
-            return(
-                <div>
-                <ApprovalCard name="Controllah" location={this.state.lat}>
+            return(<div>
                 <SeasonDisplay lat = {this.state.lat}></SeasonDisplay>
-                </ApprovalCard>
+                <h1>{this.state.lat}</h1>
                 </div>);
         }else if(!this.state.lat && this.state.errorMessage){
             return <div> Error:{this.state.errorMessage} </div>;
