@@ -20,12 +20,10 @@ class App extends React.Component{
             }
         );
     }
-
-    render(){
+    renderContent(){
         if(this.state.lat && !this.state.errorMessage){
             return(<div>
                 <SeasonDisplay lat = {this.state.lat}></SeasonDisplay>
-                <h1>{this.state.lat}</h1>
                 </div>);
         }else if(!this.state.lat && this.state.errorMessage){
             return <div> Error:{this.state.errorMessage} </div>;
@@ -33,8 +31,14 @@ class App extends React.Component{
         }else{
             return(
                 <ApprovalCard name="Waiting PLease Be Patient" location={this.state.lat} />)
-                
-        }
+    }
+}
+    render(){
+        return(
+            <div>
+             {this.renderContent()}
+            </div>
+        )
     }
 }
 

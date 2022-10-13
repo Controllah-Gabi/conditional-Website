@@ -11,15 +11,26 @@ const getSeason = (lat) =>{
       }
     };
 
+const videoConfig = {
+    true:{
+        videoS: video2,
+    },
+    flase:{
+        videoS: video1
+    }
+}
+
+
 
 const SeasonDisplay = (props) => {
     const season = getSeason(props.lat);
-    const seasonText = season === "true" ? video2 : video1;
+    const {videoS} = videoConfig[season];
+    
     return(<div className="row"> 
         <video autoPlay loop className="background-vid" width="100%" >
-            <source src ={seasonText} type = "video/mp4"/>
+            <source src ={videoS} type = "video/mp4"/>
         </video>
-        <h1>{season}</h1>
+        
     </div>)
 };
 
